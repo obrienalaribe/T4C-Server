@@ -7,9 +7,10 @@ app.get('/', function(req, res){
   res.send('<h1> Real Time Server</h1>');
 });
 
+var port = process.env.PORT || 3000
 
-http.listen(3000, function(){
-  console.log('Listening on *:3000');
+http.listen(port, function(){
+  console.log('Listening on *: ' + port);
 });
 
 io.on('connection', function(clientSocket){
