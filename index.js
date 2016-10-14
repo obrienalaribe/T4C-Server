@@ -63,4 +63,12 @@ io.on('connection', function(clientSocket){
     io.emit("driverLocationUpdateFor:" + userID, data);
   });
 
+   clientSocket.on("tripStatus", function(data){
+    var userID = data.userID;
+    var status = data.status;
+    delete data.userID;
+    console.log(util.inspect("Sending trip status " + status + " to user channel "+ userID, false, null))
+    io.emit("userChannel:" + userID, data);
+  });
+
 });
